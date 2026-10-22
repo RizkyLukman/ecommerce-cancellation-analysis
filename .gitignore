@@ -1,0 +1,17 @@
+# Data mentah berisi data pribadi pembeli -- JANGAN dipublikasikan
+archive.zip
+RAW_PUBLIC_Dataset/
+*.zip
+
+# Duplikat dan versi lama master (masih berisi anomali & label lama)
+master_clean_orders_FIXED (1).xlsx
+Clean_data/master_clean_orders.xlsx
+
+# File sementara Excel/Jupyter/Python
+~$*
+.ipynb_checkpoints/
+__pycache__/
+
+# File konteks asisten AI (bukan bagian proyek)
+CLAUDE.md
+.claude/
