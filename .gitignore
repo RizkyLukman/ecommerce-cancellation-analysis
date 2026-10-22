@@ -1,6 +1,5 @@
-# Data mentah berisi data pribadi pembeli -- JANGAN dipublikasikan
+# Arsip duplikat (isi sudah ada di RAW_PUBLIC_Dataset/ dan Clean_data/)
 archive.zip
-RAW_PUBLIC_Dataset/
 *.zip
 
 # Duplikat dan versi lama master (masih berisi anomali & label lama)

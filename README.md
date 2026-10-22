@@ -16,11 +16,12 @@ Jenis analisis yang dipakai adalah deskriptif dan diagnostik (Pareto, cross-tab,
 
 - **Sumber:** file ekspor pesanan bulanan dari marketplace, satu file per bulan.
 - **Cakupan:** 20.404 order (1 baris = 1 `order_id`), Januari 2024 – November 2025.
-- **Data mentah tidak disertakan di repository.** Folder `RAW_PUBLIC_Dataset/` berisi data pribadi pembeli (username, nomor resi, dan catatan pembeli), sehingga hanya data yang sudah dibersihkan yang dipublikasikan. Akibatnya `01_data_cleaning.ipynb` tidak dapat dijalankan ulang tanpa data mentah; notebook tersebut ditampilkan sebagai dokumentasi proses beserta output-nya. Analisis dapat direproduksi mulai dari `Clean_data/master_clean_orders_FIXED.xlsx`.
+- **Data mentah disertakan** di folder `RAW_PUBLIC_Dataset/` (satu file per bulan). Data ini adalah dataset dummy dari Kaggle, sehingga seluruh proses dapat dijalankan ulang dari awal mulai `01_data_cleaning.ipynb`. File `DecemberSales2023_public.xlsx` ikut tersedia tetapi tidak dipakai dalam analisis (periode analisis Jan 2024 – Nov 2025).
 
 ## Alur Kerja & Struktur Repository
 
 ```
+RAW_PUBLIC_Dataset/            data mentah per bulan (dataset dummy Kaggle)
 01_data_cleaning.ipynb         1. Cleaning file bulanan -> master_clean_orders_FIXED.xlsx
 02_analysis.ipynb              2. Kolom turunan + validasi -> analysis_dataset.xlsx
 03_build_dashboard_auto.py     3. Membangun dashboard Excel (Power Query, pivot, chart, slicer)
@@ -77,9 +78,10 @@ Kebutuhan: Python 3.12 dengan `pandas`, `openpyxl`, dan `scipy`; Microsoft Excel
 pip install pandas openpyxl scipy pywin32
 ```
 
-1. Jalankan `02_analysis.ipynb` untuk menghasilkan `Clean_data/analysis_dataset.xlsx`.
-2. Jalankan `python 03_build_dashboard_auto.py` untuk membangun `Dashboard/dashboard_cancel_return_auto.xlsx`.
-3. Buka dashboard di Excel. Jika folder dipindahkan, perbarui path sumber di *Data > Queries & Connections > q_orders*, lalu *Refresh All*.
+1. (Opsional) Jalankan `01_data_cleaning.ipynb` per file bulanan untuk membangun ulang isi `Clean_data/` dari `RAW_PUBLIC_Dataset/`.
+2. Jalankan `02_analysis.ipynb` untuk menghasilkan `Clean_data/analysis_dataset.xlsx`.
+3. Jalankan `python 03_build_dashboard_auto.py` untuk membangun `Dashboard/dashboard_cancel_return_auto.xlsx`.
+4. Buka dashboard di Excel. Jika folder dipindahkan, perbarui path sumber di *Data > Queries & Connections > q_orders*, lalu *Refresh All*.
 
 ## Tools
 
